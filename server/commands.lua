@@ -1,9 +1,9 @@
 function RegisterChatCommands()
-	exports["pulsar-chat"]:RegisterAdminCommand("acam", function(source, args, rawCommand)
+	plsr.Chat:RegisterAdminCommand("acam", function(source, args, rawCommand)
 		if (tonumber(args[1])) then
-			exports['pulsar-cctv']:View(source, tonumber(args[1]))
+			plsr.CCTV:View(source, tonumber(args[1]))
 		else
-			exports['pulsar-cctv']:ViewGroup(source, args[1])
+			plsr.CCTV:ViewGroup(source, args[1])
 		end
 	end, {
 		help = "View CCTV Cam",

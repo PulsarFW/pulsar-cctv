@@ -1,30 +1,30 @@
 camMoveUp, camMoveDown, camMoveLeft, camMoveRight = false, false, false, false
 
 function RegisterKeyBinds()
-	exports["pulsar-kbs"]:Add("cctv_disconnect", "ESCAPE", "keyboard", "CCTV - Close Camera", function()
-		if LocalPlayer.state.inCCTVCam then
-			exports['pulsar-cctv']:Close()
+	plsr.Keybinds:Add("cctv_disconnect", "ESCAPE", "keyboard", "CCTV - Close Camera", function()
+		if plsr.State.flags.inCCTVCam then
+			plsr.CCTV:Close()
 		end
 	end)
 
-	exports["pulsar-kbs"]:Add("cctv_previous", "LEFT", "keyboard", "CCTV - Previous Camera", function()
-		if LocalPlayer.state.inCCTVCam then
-			if GlobalState[LocalPlayer.state.inCCTVCam.camKey]?.group ~= nil then
-				exports["pulsar-core"]:ServerCallback("CCTV:PreviousInGroup", {})
-			end
+	plsr.Keybinds:Add("cctv_previous", "LEFT", "keyboard", "CCTV - Previous Camera", function()
+		if plsr.State.flags.inCCTVCam then
+            if GlobalState[plsr.State.flags.inCCTVCam.camKey]?.group ~= nil then
+				plsr.Callbacks:ServerCallback("CCTV:PreviousInGroup", {})
+            end
 		end
 	end)
 
-	exports["pulsar-kbs"]:Add("cctv_next", "RIGHT", "keyboard", "CCTV - Next Camera", function()
-		if LocalPlayer.state.inCCTVCam then
-			if GlobalState[LocalPlayer.state.inCCTVCam.camKey]?.group ~= nil then
-				exports["pulsar-core"]:ServerCallback("CCTV:NextInGroup", {})
-			end
+	plsr.Keybinds:Add("cctv_next", "RIGHT", "keyboard", "CCTV - Next Camera", function()
+		if plsr.State.flags.inCCTVCam then
+            if GlobalState[plsr.State.flags.inCCTVCam.camKey]?.group ~= nil then
+				plsr.Callbacks:ServerCallback("CCTV:NextInGroup", {})
+            end
 		end
 	end)
 
-	exports["pulsar-kbs"]:Add("cctv_up", "W", "keyboard", "CCTV - Rotate Up", function()
-		if LocalPlayer.state.inCCTVCam then
+	plsr.Keybinds:Add("cctv_up", "W", "keyboard", "CCTV - Rotate Up", function()
+		if plsr.State.flags.inCCTVCam then
 			camMoveUp = true
 		end
 	end, function()
@@ -33,8 +33,8 @@ function RegisterKeyBinds()
 		end
 	end)
 
-	exports["pulsar-kbs"]:Add("cctv_down", "S", "keyboard", "CCTV - Rotate Down", function()
-		if LocalPlayer.state.inCCTVCam then
+	plsr.Keybinds:Add("cctv_down", "S", "keyboard", "CCTV - Rotate Down", function()
+		if plsr.State.flags.inCCTVCam then
 			camMoveDown = true
 		end
 	end, function()
@@ -43,8 +43,8 @@ function RegisterKeyBinds()
 		end
 	end)
 
-	exports["pulsar-kbs"]:Add("cctv_left", "A", "keyboard", "CCTV - Rotate Left", function()
-		if LocalPlayer.state.inCCTVCam then
+	plsr.Keybinds:Add("cctv_left", "A", "keyboard", "CCTV - Rotate Left", function()
+		if plsr.State.flags.inCCTVCam then
 			camMoveLeft = true
 		end
 	end, function()
@@ -53,8 +53,8 @@ function RegisterKeyBinds()
 		end
 	end)
 
-	exports["pulsar-kbs"]:Add("cctv_right", "D", "keyboard", "CCTV - Rotate Right", function()
-		if LocalPlayer.state.inCCTVCam then
+	plsr.Keybinds:Add("cctv_right", "D", "keyboard", "CCTV - Rotate Right", function()
+		if plsr.State.flags.inCCTVCam then
 			camMoveRight = true
 		end
 	end, function()

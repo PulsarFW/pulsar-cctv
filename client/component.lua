@@ -14,20 +14,23 @@ local currentTimecycle = nil
 local offline = false
 local canrotate = false
 
-AddEventHandler('onClientResourceStart', function(resource)
-	if resource == GetCurrentResourceName() then
-		Wait(1000)
-		RegisterKeyBinds()
-	end
+CreateThread(function()
+	plsr.State.flags.inCCTVCam = false
+	RegisterKeyBinds()
 end)
 
-exports('View', function(camId)
-	local camKey = string.format("CCTV:Camera:%s", camId)
-	EnterCam(camId)
-end)
+_CCTV = {
+	View = function(self, camId)
+		local camKey = string.format("CCTV:Camera:%s", camId)
+		EnterCam(camId)
+	end,
+	Close = function(self)
+		if plsr.State.flags.inCCTVCam then
+			ExitCam()
+		end
+	end,
+}
 
-exports('Close', function()
-	if LocalPlayer.state.inCCTVCam then
-		ExitCam()
-	end
+AddEventHandler("Proxy:Shared:RegisterReady", function(component)
+	exports["pulsar_core"]:RegisterComponent("CCTV", _CCTV)
 end)

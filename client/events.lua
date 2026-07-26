@@ -1,3 +1,3 @@
 RegisterNetEvent("CCTV:Client:View", function(camId)
-    exports['pulsar-cctv']:View(camId)
+    plsr.CCTV:View(camId)
 end)

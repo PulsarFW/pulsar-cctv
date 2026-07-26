@@ -6,12 +6,18 @@
 
 # PULSAR-CCTV
 
-### In-world CCTV camera system for law enforcement
+### CCTV camera network — cycle through placed cameras via keybind
 
 <br/>
 
 ![Lua](https://img.shields.io/badge/Lua_5.4-2C2D72?style=flat-square&logo=lua&logoColor=white)
 ![FiveM](https://img.shields.io/badge/FiveM-F40552?style=flat-square)
+
+<br/>
+
+<sub>Enjoy the framework? A coffee helps keep active development, hardening, and support going.</sub>
+
+<a href="https://buymeacoffee.com/pulsarframework"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 50px !important;width: 180px !important;" /></a>
 
 <br/>
 
@@ -23,14 +29,14 @@
 
 ## Overview
 
-CCTV camera system for Pulsar Framework. Allows authorised players to access and cycle through configurable in-world camera positions, with keybind controls and role-gated access.
+Registers `plsr.CCTV`. Configured camera positions (`config/shared.lua`) with client-side keybinds to switch the active camera view.
 
 ---
 
 ## Dependencies
 
-- `pulsar-core` — framework core, role access
-- `pulsar-characters` — job checking for camera access
+- `pulsar_core` — framework core
+- `pulsar_pwnzor` — anti-cheat check loaded alongside every resource
 
 ---
 
